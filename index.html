@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PriceWise - Smart Grocery Tracker</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-bar">
+            <a href="#home" class="logo">PriceWise<span>.</span></a>
+
+            <button type="button" class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navbar">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <nav class="navbar" id="navbar">
+            <a href="#home"><span class="nav-icon">🏠</span>Home</a>
+            <a href="#compare"><span class="nav-icon">⚖️</span>Compare Prices</a>
+            <a href="#budget"><span class="nav-icon">💰</span>Budget</a>
+            <a href="#expenses"><span class="nav-icon">🧾</span>Expenses</a>
+            <a href="#shopping"><span class="nav-icon">🛍️</span>Shopping List</a>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+
+        <div class="home-content">
+            <h3>👋 WELCOME TO PRICEWISE</h3>
+            <h1>Shop Smarter.<br><span>Save Every Peso.</span></h1>
+
+            <p>
+                Compare grocery prices, manage your expenses,
+                and plan your shopping budget with ease.
+            </p>
+            <div class="home-actions">
+                <a href="#compare" class="btn">🔍 Start Comparing</a>
+                <button type="button" class="btn-outline" id="openInfo">ℹ️ How it works</button>
+            </div>
+
+            <div class="stats">
+                <div>
+                    <h3 id="homeBudget">₱0.00</h3>
+                    <p>💼 Your Budget</p>
+                </div>
+
+                <div>
+                    <h3 id="homeSpent">₱0.00</h3>
+                    <p>💸 Total Expenses</p>
+                </div>
+
+                <div>
+                    <h3 id="homeSavings">₱0.00</h3>
+                    <p>🎯 Potential Savings</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <div class="cart-icon">🛒</div>
+            <h2>Your Grocery Companion</h2>
+            <p>Compare, plan, and save on your everyday purchases.</p>
+        </div>
+
+    </section>
+
+    <!-- Compare Prices Section -->
+    <section class="section" id="compare">
+
+        <div class="section-title">
+            <h2>⚖️ Compare Grocery Prices</h2>
+            <p>Find the more affordable option before buying.</p>
+        </div>
+
+        <div class="container">
+
+            <div class="card">
+                <h3>🛒 Add Grocery Product</h3>
+
+                <label for="productImage" class="upload-area">
+                    <span>📷</span>
+                    <strong>Upload or Capture Product Image</strong>
+                    <small>Tap here to select a photo</small>
+                </label>
+
+                <input type="file" id="productImage"
+                    accept="image/*" capture="environment">
+
+                <div id="imageContainer" hidden>
+                    <img id="imagePreview" alt="Product Preview">
+                    <button type="button" class="btn-outline remove-image-btn" id="removeImageBtn">🗑️ Remove Photo</button>
+                </div>
+
+                <div class="input-group">
+                    <label>📦 Product Name</label>
+                    <input type="text" id="productName"
+                        placeholder="Example: Rice">
+                </div>
+
+                <div class="input-group">
+                    <label>🏪 Store 1</label>
+                    <input type="text" id="storeOne"
+                        placeholder="Store A">
+                </div>
+
+                <div class="input-group">
+                    <label>🏷️ Price (₱)</label>
+                    <input type="number" id="priceOne"
+                        placeholder="Enter price" min="0" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label>🏬 Store 2</label>
+                    <input type="text" id="storeTwo"
+                        placeholder="Store B">
+                </div>
+
+                <div class="input-group">
+                    <label>🏷️ Price (₱)</label>
+                    <input type="number" id="priceTwo"
+                        placeholder="Enter price" min="0" step="0.01">
+                </div>
+
+                <button class="btn" id="compareBtn">
+                    ⚖️ Compare Prices
+                </button>
+
+                <p id="compareMessage" class="message"></p>
+            </div>
+
+            <div class="card">
+                <h3>📊 Price Comparison Results</h3>
+
+                <div id="comparisonResults">
+                    <p class="empty">Your comparison results will appear here.</p>
+                </div>
+
+                <h3 class="saved-title">💾 Saved Products</h3>
+                <div id="savedComparisons"></div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Budget Section -->
+    <section class="section alternate" id="budget">
+
+        <div class="section-title">
+            <h2>💰 Budget Planner</h2>
+            <p>Set your grocery budget and monitor your spending.</p>
+        </div>
+
+        <div class="card budget-card">
+
+            <div class="input-group">
+                <label>💼 Enter Your Grocery Budget (₱)</label>
+                <input type="number" id="budgetAmount"
+                    placeholder="Example: 3000" min="0">
+            </div>
+
+            <button class="btn" id="saveBudgetBtn">
+                💾 Save Budget
+            </button>
+
+            <div class="budget-info">
+                <div>
+                    <p>Total Budget</p>
+                    <h3 id="budgetDisplay">₱0.00</h3>
+                </div>
+
+                <div>
+                    <p>Total Spent</p>
+                    <h3 id="budgetSpent">₱0.00</h3>
+                </div>
+
+                <div>
+                    <p>Remaining</p>
+                    <h3 id="budgetRemaining">₱0.00</h3>
+                </div>
+            </div>
+
+            <div class="progress-track">
+                <div id="budgetProgress"></div>
+            </div>
+
+            <p id="budgetMessage" class="message">
+                Set your budget to start tracking.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- Expenses Section -->
+    <section class="section" id="expenses">
+
+        <div class="section-title">
+            <h2>🧾 Expense Tracker</h2>
+            <p>Record your grocery purchases and expenses.</p>
+        </div>
+
+        <div class="card">
+
+            <div class="input-group">
+                <label>📝 Expense Name</label>
+                <input type="text" id="expenseName"
+                    placeholder="Example: Vegetables">
+            </div>
+
+            <div class="input-group">
+                <label>💵 Amount (₱)</label>
+                <input type="number" id="expenseAmount"
+                    placeholder="Enter amount" min="0">
+            </div>
+
+            <button class="btn" id="addExpenseBtn">
+                ➕ Add Expense
+            </button>
+
+            <div class="expense-total">
+                <p>Total Expenses</p>
+                <h2 id="totalExpenses">₱0.00</h2>
+            </div>
+
+            <ul id="expenseList" class="item-list"></ul>
+
+            <p id="expenseEmpty" class="empty">
+                No expenses recorded yet.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- Shopping List Section -->
+    <section class="section alternate" id="shopping">
+
+        <div class="section-title">
+            <h2>🛍️ My Shopping List</h2>
+            <p>Organize the grocery items you need to buy.</p>
+        </div>
+
+        <div class="card">
+
+            <div class="input-group">
+                <label>🥚 Grocery Item</label>
+                <input type="text" id="shoppingItem"
+                    placeholder="Example: Eggs">
+            </div>
+
+            <div class="input-group">
+                <label>🔢 Quantity</label>
+                <input type="number" id="shoppingQuantity"
+                    value="1" min="1">
+            </div>
+
+            <button class="btn" id="addShoppingBtn">
+                ➕ Add to Shopping List
+            </button>
+
+            <ul id="shoppingList" class="item-list"></ul>
+
+            <p id="shoppingEmpty" class="empty">
+                Your shopping list is empty.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <h2>PriceWise.</h2>
+        <p>Smart Grocery Price Comparison & Budget Tracker</p>
+        <p>© 2026 PriceWise | All Rights Reserved</p>
+        <small>⚠️ Prices are manually entered and are not live store prices.</small>
+    </footer>
+
+    <dialog class="modal" id="infoModal" aria-labelledby="infoTitle">
+        <button type="button" class="modal-close" id="closeInfo" aria-label="Close dialog">✕</button>
+        <h2 id="infoTitle">ℹ️ How PriceWise works</h2>
+        <ul>
+            <li><span class="m-icon">⚖️</span><span>Enter two stores and their prices to see which one is cheaper.</span></li>
+            <li><span class="m-icon">💰</span><span>Set your grocery budget and watch your remaining balance.</span></li>
+            <li><span class="m-icon">🧾</span><span>Record every purchase in the expense tracker.</span></li>
+            <li><span class="m-icon">🛍️</span><span>Keep a shopping list so you never forget an item.</span></li>
+        </ul>
+        <button type="button" class="btn" id="confirmInfo">👍 Got it</button>
+    </dialog>
+
+    <script src="../scripts/script.js"></script>
+    
+
+</body>
+</html>
